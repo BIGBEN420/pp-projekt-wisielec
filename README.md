@@ -14,7 +14,7 @@ Projekt zaliczeniowy polega na stworzeniu gry w wisielca w formie interfejsu gra
 
 ## Instrukcja obsługi
 1. Uruchomienie aplikacji:
-   - Pobierz repozytorium z kodem źródłowym aplikacji z platformy Github.
+   - Pobierz repozytorium z kodem źródłowym aplikacji oraz bazą słów z platformy Github.
    - Skompiluj i uruchom projekt w środowisku Java, np. za pomocą IDE.
 2. Dodawanie nowego słowa:
    - Kliknij przycisk "Dodaj słowo".

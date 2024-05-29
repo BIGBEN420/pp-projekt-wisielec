@@ -97,4 +97,5 @@ Projekt zaliczeniowy polega na stworzeniu gry w wisielca w formie interfejsu gra
 - `getRandomWord()`: Zwraca losowe słowo z listy.
 - `getAllWords()`: Zwraca wszystkie słowa z listy.
 
+
 Autor Bartłomiej Krawczyk nr albumu 58847

@@ -1,168 +1,100 @@
-# Gra w wisielca
-## Spis Treści
+#Gra w Wisielca
 
-1. [Opis Projektu](#opis-projektu)
-2. [Funkcjonalności](#funkcjonalności)
-3. [Instrukcje Obsługi](#instrukcje-obsługi)
-4. [Struktura Projektu](#struktura-projektu)
-5. [Opis Klas i Funkcji](#opis-klas-i-funkcji)
+## Spis treści
+1. Opis projektu
+2. Instrukcja obsługi
+3. Klasa `HangmanGUI`
+4. Klasa `HangmanDifficultyListener`
+5. Klasa `HangmanGameStats`
+6. Klasa `HangmanWordManager`
 
-## Opis Projektu
 
-**HangmanGUI** to aplikacja desktopowa napisana w języku Java, która implementuje klasyczną grę w Wisielca. Użytkownik może wybierać między różnymi poziomami trudności, zarządzać bazą słów oraz śledzić statystyki gry.
+## Opis projektu
+Projekt zaliczeniowy polega na stworzeniu gry w wisielca w formie interfejsu graficznego. Gracz ma za zadanie odgadnąć ukryte słowo, wpisując litery lub całe słowo. Projekt wykorzystuje biblioteki Swing do budowy interfejsu graficznego.
 
-## Funkcjonalności
+## Instrukcja obsługi
+1. Uruchomienie aplikacji:
+   - Pobierz repozytorium z kodem źródłowym aplikacji z platformy Github.
+   - Skompiluj i uruchom projekt w środowisku Java, np. za pomocą IDE.
+2. Dodawanie nowego słowa:
+   - Kliknij przycisk "Dodaj słowo".
+   - Wprowadź nowe słowo w wyświetlonym oknie dialogowym.
+3. Wyświetlanie bazy słów:
+   - Kliknij przycisk "Wyświetl słowa z bazy".
+   - Zostanie wyświetlone okno dialogowe z listą wszystkich słów w bazie.
+4. Rozpoczęcie gry:
+   - Wybierz poziom trudności (łatwy, średni, trudny).
+   - Gra rozpocznie się po wybraniu poziomu trudności.
+5. Odgadywanie słowa:
+   - Wpisz literę lub całe słowo w pole tekstowe i naciśnij Enter.
+   - W przypadku wprowadzenia litery, gra sprawdzi, czy litera występuje w słowie.
+   - W przypadku wprowadzenia całego słowa, gra sprawdzi, czy jest ono zgodne ze szukanym.
+6. Zakończenie gry:
+   - Gra zakończy się po wygranej (odgadnięciu słowa) lub przegranej (przekroczeniu limitu prób).
+   - Wyświetlone zostaną statystyki gry oraz inform
 
-1. **Graficzny Interfejs Użytkownika**: Intuicyjny interfejs użytkownika zapewnia łatwą nawigację i interakcję.
-2. **Wybór Poziomu Trudności**: Możliwość wyboru między trzema poziomami trudności: Łatwy, Średni i Trudny.
-3. **Zarządzanie Słowami**: Dodawanie nowych słów do bazy oraz wyświetlanie wszystkich słów z bazy.
-4. **Statystyki Gry**: Śledzenie liczby prób, błędów, wygranych oraz średniej liczby prób na grę.
+## Klasa `HangmanGUI`
+#### Konstruktor:
+- `HangmanGUI()`: Konstruktor bezargumentowy inicjuje interfejs graficzny gry.
 
-## Instrukcje Obsługi
+#### Zmienne:
+- `displayPanel`: JPanel wyświetlający planszę gry.
+- `buttonPanel`: JPanel zawierający przyciski sterujące grą.
+- `inputField`: JTextField do wprowadzania liter lub słów.
+- `easyButton`, `mediumButton`, `hardButton`: Przyciski do wyboru poziomu trudności.
+- `addButton`: Przycisk do dodawania nowego słowa do bazy.
+- `showWordsButton`: Przycisk do wyświetlania bazy słów.
+- `statsLabel`: JLabel wyświetlający statystyki gry.
+- `wordManager`: Obiekt zarządzający słowami w grze.
+- `gameStats`: Obiekt przechowujący statystyki gry.
+- `secretWord`: String przechowujący ukryte słowo.
+- `attempts`: Int przechowujący liczbę prób.
+- `errors`: Int przechowujący liczbę błędów.
+- `inputAttempts`: Int przechowujący liczbę prób w danej sesji.
+- `guessedLetters`: Zbiór przechowujący już zgadywane litery.
+- `originalAttempts`: Int przechowujący pierwotną liczbę prób.
 
-### Wymagania
-
-- Java Development Kit (JDK) 8 lub nowszy
-- Środowisko programistyczne lub edytor tekstu (np. IntelliJ IDEA, Eclipse)
-
-### Uruchomienie
-
-1. Sklonuj repozytorium na swoje urządzenie.
-2. Upewnij się, że plik `baza.txt` z listą słów znajduje się w katologu src.
-3. Otwórz projekt w wybranym środowisku programistycznym.
-4. Uruchom plik `HangmanGUI.java` jako aplikację Java plik znajduje się folderze game.
-
-### Dodawanie Nowych Słów
-
-1. Kliknij przycisk "Dodaj słowo".
-2. Wprowadź nowe słowo do pola dialogowego i potwierdź.
-
-### Wybór Poziomu Trudności
-
-1. Kliknij jeden z przycisków: "Łatwy", "Średni" lub "Trudny".
-
-### Wprowadzanie Liter/Słów
-
-1. Wpisz literę lub całe słowo w pole tekstowe na dole okna.
-2. Naciśnij klawisz Enter, aby potwierdzić.
-
-### Wyświetlanie Słów z Bazy
-
-1. Kliknij przycisk "Pokaż słowa".
-
-### Zakończenie Gry
-
-- Gra kończy się, gdy odgadniesz wszystkie litery w słowie lub wykorzystasz wszystkie próby.
-- Po zakończeniu gry możesz rozpocząć nową grę, wybierając poziom trudności.
-
-## Struktura Projektu
-
-Projekt składa się z następujących plików:
-- `HangmanGUI.java`: Główna klasa odpowiedzialna za interfejs użytkownika i logikę gry.
-- `HangmanWordManager.java`: Klasa zarządzająca bazą słów.
-- `HangmanGameStats.java`: Klasa odpowiedzialna za przechowywanie i wyświetlanie statystyk gry.
-- `HangmanDifficultyListener.java`: Klasa obsługująca wybór poziomu trudności.
-
-## Opis Klas i Funkcji
-
-### HangmanGUI.java
-
-#### Klasa
-
-- **HangmanGUI**: Rozszerza `JFrame`. Implementuje graficzny interfejs użytkownika i logikę gry.
-
-#### Pola
-
-- `JPanel displayPanel`: Panel do wyświetlania słowa.
-- `JTextField inputField`: Pole tekstowe do wprowadzania liter lub całych słów.
-- `JButton easyButton`, `mediumButton`, `hardButton`: Przyciski do wyboru poziomu trudności.
-- `JButton addButton`, `showWordsButton`: Przyciski do dodawania nowych słów i wyświetlania wszystkich słów.
-- `JLabel statsLabel`: Etykieta do wyświetlania statystyk gry.
-- `JLabel wordLengthLabel`: Etykieta do wyświetlania długości słowa.
-- `HangmanWordManager wordManager`: Obiekt zarządzający słowami.
-- `HangmanGameStats gameStats`: Obiekt zarządzający statystykami gry.
-- `String secretWord`: Przechowuje aktualne tajne słowo.
-- `int attempts`: Liczba dostępnych prób.
-- `int errors`: Liczba błędów.
-- `Set<Character> guessedLetters`: Zbiór odgadniętych liter.
-
-#### Konstruktor
-
-- `HangmanGUI()`: Inicjalizuje interfejs użytkownika, ładuje słowa z bazy, ustawia słuchaczy zdarzeń i rozpoczyna grę.
-
-#### Metody
-
-- `startGame(int maxAttempts)`: Rozpoczyna nową grę z określoną liczbą maksymalnych prób.
-- `displayWord()`: Wyświetla aktualny stan tajnego słowa.
-- `updateStats()`: Aktualizuje etykietę statystyk.
-- `checkLetter(char letter)`: Sprawdza, czy wprowadzona litera znajduje się w tajnym słowie.
-- `checkWord(String word)`: Sprawdza, czy wprowadzone słowo jest poprawne.
+#### Metody:
+- `startGame(int maxAttempts)`: Rozpoczyna grę z określoną ilością prób.
+- `displayWord()`: Wyświetla słowo do odgadnięcia.
+- `updateStats()`: Aktualizuje statystyki gry.
+- `checkLetter(char letter)`: Sprawdza wprowadzoną literę.
+- `checkWord(String word)`: Sprawdza wprowadzone słowo.
 - `checkWinOrLoss()`: Sprawdza, czy gra została wygrana lub przegrana.
-- `showLossImage()`: Wyświetla obrazek przegranej.
+- `showLossImage()`: Wyświetla obrazek w przypadku przegranej.
 - `startNewGame()`: Rozpoczyna nową grę.
-- `displayAllWords()`: Wyświetla wszystkie słowa z bazy w oknie dialogowym.
+- `displayAllWords()`: Wyświetla bazę danych słów.
 
-### HangmanWordManager.java
+## Klasa `HangmanDifficultyListener`
+#### Konstruktor:
+- `HangmanDifficultyListener(int maxAttempts, HangmanGUI gui)`: Inicjuje obiekt określający poziom trudności.
 
-#### Klasa
+#### Metody:
+- `actionPerformed(ActionEvent e)`: Obsługuje zdarzenie akcji, rozpoczynając grę.
 
-- **HangmanWordManager**: Zarządza bazą słów używanych w grze.
+## Klasa `HangmanGameStats`
+#### Zmienne:
+- `totalAttemptsToWin`: Int przechowujący łączną liczbę prób do wygranej.
+- `totalGames`: Int przechowujący łączną liczbę gier.
+- `wins`: Int przechowujący liczbę wygranych.
 
-#### Pola
-
-- `ArrayList<String> words: Lista przechowująca słowa.
-- 'String currentDirectory: informacje o lokalizacji folderu.
-- 'String fileName: przechowuje informacje o lokalizacji baza.txt
-#### Konstruktor
-
-- `HangmanWordManager()`: Inicjalizuje pustą listę słów.
-
-#### Metody
-
-- `loadWords()`: Wczytuje słowa z pliku `baza.txt`.
-- `saveWords()`: Zapisuje słowa do pliku `baza.txt`.
-- `addWord(String word)`: Dodaje nowe słowo do listy i zapisuje je w pliku.
-- `getRandomWord()`: Zwraca losowe słowo z listy.
-- `getAllWords()`: Zwraca wszystkie słowa jako sformatowany string.
-
-### HangmanGameStats.java
-
-#### Klasa
-
-- **HangmanGameStats**: Przechowuje i zarządza statystykami gry.
-
-#### Pola
-
-- `int totalAttempts`: Całkowita liczba prób.
-- `int totalGames`: Całkowita liczba gier.
-- `int wins`: Liczba wygranych gier.
-
-#### Metody
-
-- `incrementWins()`: Zwiększa liczbę wygranych gier.
-- `incrementGames()`: Zwiększa liczbę rozegranych gier.
-- `addAttempts(int attempts)`: Dodaje próby do całkowitej liczby prób.
+#### Metody:
+- `incrementWins()`: Inkrementuje liczbę wygranych.
+- `incrementGames()`: Inkrementuje liczbę gier.
+- `addAttemptsToWin(int attempts)`: Dodaje liczbę prób do wygranych.
 - `getStats(int attempts, int errors)`: Zwraca statystyki gry w formacie HTML.
 
-### HangmanDifficultyListener.java
+## Klasa `HangmanWordManager`
+#### Zmienne:
+- `words`: ArrayList przechowujący słowa.
+- `currentDirectory`: String przechowujący ścieżkę do folderu źródłowego.
+- `fileName`: String przechowujący ścieżkę do pliku z bazą słów.
 
-#### Klasa
+#### Metody:
+- `loadWords()`: Wczytuje słowa z pliku.
+- `saveWords()`: Zapisuje słowa do pliku.
+- `addWord(String word)`: Dodaje nowe słowo do listy.
+- `getRandomWord()`: Zwraca losowe słowo z listy.
+- `getAllWords()`: Zwraca wszystkie słowa z listy.
 
-- **HangmanDifficultyListener**: Implementuje ActionListener do obsługi wyboru poziomu trudności.
-
-#### Pola
-
-- `int maxAttempts`: Maksymalna liczba prób dla danego poziomu trudności.
-- `HangmanGUI gui`: Odniesienie do głównego interfejsu użytkownika.
-
-#### Konstruktor
-
-- `HangmanDifficultyListener(int maxAttempts, HangmanGUI gui)`: Inicjalizuje słuchacza z określoną liczbą maksymalnych prób i odniesieniem do GUI.
-
-#### Metody
-
-- `actionPerformed(ActionEvent e)`: Rozpoczyna nową grę z określoną liczbą prób po wybraniu poziomu trudności.
-
-## Autorzy
-
-Projekt został stworzony przez Bartłomieja Krawczyka nr albumu 58847. Wszelkie uwagi i sugestie są mile widziane!
+Autor Bartłomiej Krawczyk nr albumu 58847

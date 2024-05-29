@@ -1,4 +1,4 @@
-#Gra w Wisielca
+##Gra w Wisielca
 
 ## Spis treści
 1. Opis projektu

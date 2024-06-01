@@ -16,7 +16,7 @@ public class HangmanWordManager {//Utworzenie klasy HangmanWordManager
     public String currentDirectory = System.getProperty("user.dir");
 
     // Zmienna przechowująca ścieżkę do pliku Baza.txt
-    private String fileName = currentDirectory + File.separator + "src\\Baza.txt"; //Zmienna definiująca scieżkę do Baza.txt
+    private String fileName = currentDirectory + File.separator + "\Baza.txt"; //Zmienna definiująca scieżkę do Baza.txt
 
     // Metoda wczytująca słowa z pliku
     public void loadWords() {
